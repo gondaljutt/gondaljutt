@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kamgar — Work Wear & Safety Experts</title>
+  <meta name="description" content="Pakistan's trusted source for professional work wear and safety equipment. Launching soon at kamgar.pk." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange:  #F97316;
+      --orange-dark: #C2570E;
+      --black:   #0F0F0F;
+      --charcoal:#1C1C1E;
+      --gray:    #3A3A3C;
+      --light:   #F5F5F0;
+      --muted:   #9A9A9A;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Inter', sans-serif;
+      background: var(--black);
+      color: var(--light);
+      overflow-x: hidden;
+    }
+
+    /* ── Background texture ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 40px,
+          rgba(249,115,22,.03) 40px,
+          rgba(249,115,22,.03) 42px
+        );
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Safety stripe top bar ── */
+    .stripe-bar {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      height: 8px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--orange)      0px,
+        var(--orange)      32px,
+        var(--black)       32px,
+        var(--black)       64px
+      );
+    }
+
+    /* ── Main layout ── */
+    .container {
+      position: relative;
+      z-index: 1;
+      min-height: calc(100vh - 8px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+      text-align: center;
+    }
+
+    /* ── Logo ── */
+    .logo-wrap {
+      margin-bottom: 2rem;
+    }
+
+    .logo-wrap img {
+      width: clamp(200px, 40vw, 280px);
+      height: auto;
+      filter: drop-shadow(0 4px 24px rgba(249,115,22,.3));
+    }
+
+    /* ── Tag line ── */
+    /* ── Divider ── */
+    .divider {
+      width: 64px;
+      height: 3px;
+      background: var(--orange);
+      border-radius: 2px;
+      margin: 0 auto 2.5rem;
+    }
+
+    /* ── Headline ── */
+    .headline {
+      font-size: clamp(1.5rem, 4vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1.25;
+      max-width: 640px;
+      margin-bottom: 1.25rem;
+    }
+
+    .headline em {
+      font-style: normal;
+      color: var(--orange);
+    }
+
+    /* ── Body copy ── */
+    .copy {
+      font-size: clamp(0.9rem, 2vw, 1.05rem);
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.8;
+      margin-bottom: 3rem;
+    }
+
+    /* ── Notify form ── */
+    .form-wrap {
+      display: flex;
+      gap: 0;
+      max-width: 440px;
+      width: 100%;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 0 0 1px var(--gray), 0 8px 32px rgba(0,0,0,.5);
+      margin-bottom: 3.5rem;
+    }
+
+    .form-wrap input[type="email"] {
+      flex: 1;
+      padding: 0.85rem 1.1rem;
+      background: var(--charcoal);
+      border: none;
+      outline: none;
+      color: var(--light);
+      font-family: inherit;
+      font-size: 0.95rem;
+    }
+
+    .form-wrap input[type="email"]::placeholder { color: var(--muted); }
+
+    .form-wrap button {
+      padding: 0.85rem 1.5rem;
+      background: var(--orange);
+      border: none;
+      color: #fff;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .form-wrap button:hover { background: var(--orange-dark); }
+
+    /* ── Trust badges ── */
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.25rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .badge {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--charcoal);
+      border: 1px solid var(--gray);
+      border-radius: 32px;
+      padding: 0.45rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .badge svg {
+      color: var(--orange);
+      flex-shrink: 0;
+    }
+
+    /* ── Footer ── */
+    footer {
+      font-size: 0.75rem;
+      color: var(--gray);
+      letter-spacing: 0.06em;
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: var(--orange); }
+
+    /* ── Responsive tweaks ── */
+    @media (max-width: 480px) {
+      .form-wrap { flex-direction: column; border-radius: 8px; }
+      .form-wrap button { padding: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="stripe-bar"></div>
+
+  <div class="container">
+
+    <!-- Logo -->
+    <div class="logo-wrap">
+      <img src="logo.png" alt="Kamgar — Work & Safety Ware Experts" />
+    </div>
+
+    <div class="divider"></div>
+
+    <h1 class="headline">
+      Gearing up to keep<br /><em>Pakistan's workforce safe.</em>
+    </h1>
+
+    <p class="copy">
+      From high-visibility vests to industrial boots, helmets to harnesses —
+      Kamgar is building Pakistan's go-to destination for professional work wear
+      and certified safety equipment. Something great is on the way.
+    </p>
+
+    <!-- Notify form -->
+    <form class="form-wrap" onsubmit="handleSubmit(event)">
+      <input type="email" placeholder="Enter your email for early access" required />
+      <button type="submit">Notify Me</button>
+    </form>
+
+    <!-- Trust badges -->
+    <div class="badges">
+      <div class="badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        Certified Safety Gear
+      </div>
+      <div class="badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+        </svg>
+        Launching Soon
+      </div>
+      <div class="badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+        </svg>
+        Based in Pakistan
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Kamgar &nbsp;|&nbsp; <a href="mailto:info@kamgar.pk">info@kamgar.pk</a> &nbsp;|&nbsp; kamgar.pk</p>
+    </footer>
+
+  </div>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button');
+      const input = e.target.querySelector('input');
+      btn.textContent = "You're on the list!";
+      btn.style.background = '#16a34a';
+      btn.disabled = true;
+      input.disabled = true;
+    }
+  </script>
+
+</body>
+</html>
