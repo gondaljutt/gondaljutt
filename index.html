@@ -6,6 +6,22 @@
   <title>Kamgar — Work Wear & Safety Experts</title>
   <link rel="icon" type="image/png" href="favicon.png" />
   <meta name="description" content="Pakistan's trusted source for professional work wear and safety equipment. Launching soon at kamgar.pk." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Kamgar — Work Wear & Safety Experts" />
+  <meta property="og:description" content="Pakistan's trusted source for professional work wear and safety equipment. Launching soon at kamgar.pk." />
+  <meta property="og:image" content="https://kamgar.pk/logo.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://kamgar.pk/" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Kamgar — Work Wear & Safety Experts" />
+  <meta name="twitter:description" content="Pakistan's trusted source for professional work wear and safety equipment. Launching soon at kamgar.pk." />
+  <meta name="twitter:image" content="https://kamgar.pk/logo.png" />
+
+  <link rel="canonical" href="https://kamgar.pk/" />
+  <link rel="preload" as="image" href="logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
@@ -13,13 +29,13 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --orange:  #F97316;
+      --orange:      #F97316;
       --orange-dark: #C2570E;
-      --black:   #0F0F0F;
-      --charcoal:#1C1C1E;
-      --gray:    #3A3A3C;
-      --light:   #F5F5F0;
-      --muted:   #9A9A9A;
+      --black:       #0F0F0F;
+      --charcoal:    #1C1C1E;
+      --gray:        #3A3A3C;
+      --light:       #F5F5F0;
+      --muted:       #ADADAD;
     }
 
     html, body {
@@ -47,18 +63,18 @@
       z-index: 0;
     }
 
-    /* ── Safety stripe top bar ── */
+    /* ── Safety stripe top bar (diagonal hazard tape) ── */
     .stripe-bar {
       position: relative;
       z-index: 10;
       width: 100%;
       height: 8px;
       background: repeating-linear-gradient(
-        90deg,
-        var(--orange)      0px,
-        var(--orange)      32px,
-        var(--black)       32px,
-        var(--black)       64px
+        45deg,
+        var(--orange)  0px,
+        var(--orange)  16px,
+        var(--black)   16px,
+        var(--black)   32px
       );
     }
 
@@ -76,9 +92,7 @@
     }
 
     /* ── Logo ── */
-    .logo-wrap {
-      margin-bottom: 2rem;
-    }
+    .logo-wrap { margin-bottom: 2rem; }
 
     .logo-wrap img {
       width: clamp(200px, 40vw, 280px);
@@ -86,7 +100,6 @@
       filter: drop-shadow(0 4px 24px rgba(249,115,22,.3));
     }
 
-    /* ── Tag line ── */
     /* ── Divider ── */
     .divider {
       width: 64px;
@@ -117,7 +130,46 @@
       color: var(--muted);
       max-width: 520px;
       line-height: 1.8;
-      margin-bottom: 3rem;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── Countdown ── */
+    .countdown {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .countdown-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .countdown-number {
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 900;
+      color: var(--orange);
+      line-height: 1;
+      min-width: 2.5ch;
+    }
+
+    .countdown-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .countdown-sep {
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 900;
+      color: var(--gray);
+      align-self: flex-start;
+      padding-top: 0.15rem;
     }
 
     /* ── Notify form ── */
@@ -129,7 +181,7 @@
       border-radius: 6px;
       overflow: hidden;
       box-shadow: 0 0 0 1px var(--gray), 0 8px 32px rgba(0,0,0,.5);
-      margin-bottom: 3.5rem;
+      margin-bottom: 1rem;
     }
 
     .form-wrap input[type="email"] {
@@ -161,6 +213,20 @@
     }
 
     .form-wrap button:hover { background: var(--orange-dark); }
+    .form-wrap button:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+
+    /* ── Success message ── */
+    .success-msg {
+      display: none;
+      align-items: center;
+      gap: 0.5rem;
+      color: #4ade80;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .success-msg.visible { display: flex; justify-content: center; }
 
     /* ── Trust badges ── */
     .badges {
@@ -168,7 +234,8 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 1.25rem;
-      margin-bottom: 3.5rem;
+      margin-top: 2.5rem;
+      margin-bottom: 2rem;
     }
 
     .badge {
@@ -185,10 +252,36 @@
       letter-spacing: 0.04em;
     }
 
-    .badge svg {
-      color: var(--orange);
-      flex-shrink: 0;
+    .badge svg { color: var(--orange); flex-shrink: 0; }
+
+    /* ── Social links ── */
+    .socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+      margin-bottom: 3rem;
     }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.5rem 1.1rem;
+      background: var(--charcoal);
+      border: 1px solid var(--gray);
+      border-radius: 32px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .social-link:hover { border-color: var(--orange); color: var(--orange); }
+    .social-link:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+    .social-link svg { flex-shrink: 0; }
 
     /* ── Footer ── */
     footer {
@@ -197,17 +290,15 @@
       letter-spacing: 0.06em;
     }
 
-    footer a {
-      color: var(--muted);
-      text-decoration: none;
-    }
-
+    footer a { color: var(--muted); text-decoration: none; }
     footer a:hover { color: var(--orange); }
 
     /* ── Responsive tweaks ── */
     @media (max-width: 480px) {
       .form-wrap { flex-direction: column; border-radius: 8px; }
       .form-wrap button { padding: 0.85rem; }
+      .socials { gap: 0.6rem; }
+      .countdown { gap: 1rem; }
     }
   </style>
 </head>
@@ -219,7 +310,7 @@
 
     <!-- Logo -->
     <div class="logo-wrap">
-      <img src="logo.png" alt="Kamgar — Work & Safety Ware Experts" />
+      <img src="logo.png" alt="Kamgar — Work Wear & Safety Experts" width="345" height="278" />
     </div>
 
     <div class="divider"></div>
@@ -234,50 +325,155 @@
       and certified safety equipment. Something great is on the way.
     </p>
 
+    <!-- Countdown timer — update LAUNCH_DATE to your actual launch date -->
+    <div class="countdown" aria-label="Countdown to launch">
+      <div class="countdown-unit">
+        <span class="countdown-number" id="cd-days">--</span>
+        <span class="countdown-label">Days</span>
+      </div>
+      <span class="countdown-sep" aria-hidden="true">:</span>
+      <div class="countdown-unit">
+        <span class="countdown-number" id="cd-hours">--</span>
+        <span class="countdown-label">Hours</span>
+      </div>
+      <span class="countdown-sep" aria-hidden="true">:</span>
+      <div class="countdown-unit">
+        <span class="countdown-number" id="cd-mins">--</span>
+        <span class="countdown-label">Mins</span>
+      </div>
+      <span class="countdown-sep" aria-hidden="true">:</span>
+      <div class="countdown-unit">
+        <span class="countdown-number" id="cd-secs">--</span>
+        <span class="countdown-label">Secs</span>
+      </div>
+    </div>
+
     <!-- Notify form -->
-    <form class="form-wrap" onsubmit="handleSubmit(event)">
-      <input type="email" placeholder="Enter your email for early access" required />
+    <!-- Replace YOUR_FORM_ID with your Formspree form ID — sign up free at formspree.io -->
+    <form class="form-wrap" id="notify-form"
+          action="https://formspree.io/f/YOUR_FORM_ID"
+          method="POST">
+      <input type="email" name="email"
+             aria-label="Your email address"
+             placeholder="Enter your email for early access"
+             required />
       <button type="submit">Notify Me</button>
     </form>
+
+    <div class="success-msg" id="success-msg" role="status" aria-live="polite">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+      You're on the list — we'll be in touch!
+    </div>
 
     <!-- Trust badges -->
     <div class="badges">
       <div class="badge">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
         </svg>
         Certified Safety Gear
       </div>
       <div class="badge">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
           <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
         </svg>
         Launching Soon
       </div>
       <div class="badge">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
           <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
         </svg>
         Based in Pakistan
       </div>
     </div>
 
+    <!-- Social links -->
+    <div class="socials">
+      <a href="https://facebook.com/kamgarpk" target="_blank" rel="noopener noreferrer"
+         class="social-link" aria-label="Follow Kamgar on Facebook">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+        </svg>
+        Facebook
+      </a>
+      <a href="https://instagram.com/kamgarpk" target="_blank" rel="noopener noreferrer"
+         class="social-link" aria-label="Follow Kamgar on Instagram">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+        </svg>
+        Instagram
+      </a>
+      <a href="https://wa.me/923399009898" target="_blank" rel="noopener noreferrer"
+         class="social-link" aria-label="Chat with Kamgar on WhatsApp">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+        </svg>
+        WhatsApp
+      </a>
+    </div>
+
     <footer>
-      <p>&copy; 2026 Kamgar &nbsp;|&nbsp; <a href="mailto:info@kamgar.pk">info@kamgar.pk</a> &nbsp;|&nbsp; kamgar.pk</p>
+      <p>&copy; 2026 Kamgar &nbsp;|&nbsp; <a href="mailto:info@kamgar.pk">info@kamgar.pk</a> &nbsp;|&nbsp; <a href="https://kamgar.pk">kamgar.pk</a></p>
     </footer>
 
   </div>
 
   <script>
-    function handleSubmit(e) {
-      e.preventDefault();
-      const btn = e.target.querySelector('button');
-      const input = e.target.querySelector('input');
-      btn.textContent = "You're on the list!";
-      btn.style.background = '#16a34a';
-      btn.disabled = true;
-      input.disabled = true;
+    // ── Countdown timer ───────────────────────────────────────────
+    // Update this to your actual launch date (PKT = UTC+5)
+    const LAUNCH_DATE = new Date('2026-04-01T00:00:00+05:00');
+
+    function updateCountdown() {
+      const diff = LAUNCH_DATE - new Date();
+      if (diff <= 0) {
+        document.querySelector('.countdown').style.display = 'none';
+        return;
+      }
+      const days  = Math.floor(diff / 864e5);
+      const hours = Math.floor((diff % 864e5) / 36e5);
+      const mins  = Math.floor((diff % 36e5) / 6e4);
+      const secs  = Math.floor((diff % 6e4) / 1e3);
+      document.getElementById('cd-days').textContent  = String(days).padStart(2, '0');
+      document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('cd-mins').textContent  = String(mins).padStart(2, '0');
+      document.getElementById('cd-secs').textContent  = String(secs).padStart(2, '0');
     }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // ── Notify form ───────────────────────────────────────────────
+    const form       = document.getElementById('notify-form');
+    const successMsg = document.getElementById('success-msg');
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const btn = form.querySelector('button');
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.style.display = 'none';
+          successMsg.classList.add('visible');
+        } else {
+          btn.textContent = 'Try again';
+          btn.disabled = false;
+        }
+      } catch {
+        btn.textContent = 'Try again';
+        btn.disabled = false;
+      }
+    });
   </script>
 
 </body>
